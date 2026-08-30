@@ -11,7 +11,7 @@ const loginScreen = document.querySelector("[data-login-screen]");
 const loginForm = document.querySelector("[data-login-form]");
 const profileScreen = document.querySelector("[data-profile-screen]");
 const appShell = document.querySelector("[data-app-shell]");
-const profileButtonText = document.querySelector(".profile-button span");
+const headerProfileImage = document.querySelector("[data-header-profile-image]");
 const trendingShelf = document.querySelector("[data-trending-shelf]");
 const viewAllTrending = document.querySelector("[data-view-all-trending]");
 const trendingOverlay = document.querySelector("[data-trending-overlay]");
@@ -261,9 +261,11 @@ loginForm.addEventListener("submit", (event) => {
 document.querySelectorAll("[data-profile-choice]").forEach((profile) => {
   profile.addEventListener("click", () => {
     const profileName = profile.dataset.profileChoice;
+    const profileImage = profile.querySelector(".profile-avatar");
     profileScreen.hidden = true;
     appShell.hidden = false;
-    profileButtonText.textContent = profileName.slice(0, 2).toUpperCase();
+    headerProfileImage.src = profileImage.src;
+    headerProfileImage.alt = `${profileName} profile`;
     window.scrollTo({ top: 0, behavior: "auto" });
   });
 });
